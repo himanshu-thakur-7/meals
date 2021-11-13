@@ -6,6 +6,7 @@ class CategoryItem extends StatelessWidget {
   final String title;
   final Color color;
   final String id;
+
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -26,11 +27,11 @@ class CategoryItem extends StatelessWidget {
           ),
           decoration: BoxDecoration(
             gradient: LinearGradient(
-              colors: [color.withOpacity(0.7), color],
+              colors: [color.withOpacity(0.6), color],
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
             ),
-            borderRadius: BorderRadius.circular(15),
+            borderRadius: BorderRadius.circular(12),
           )),
     );
   }

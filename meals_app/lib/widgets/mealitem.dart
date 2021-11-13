@@ -55,17 +55,17 @@ class MealItem extends StatelessWidget {
     return InkWell(
       onTap: () => selectMeal(context),
       child: Card(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-        elevation: 4,
-        margin: EdgeInsets.all(10),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+        elevation: 3,
+        margin: EdgeInsets.all(15),
         child: Column(
           children: <Widget>[
             Stack(
               children: <Widget>[
                 ClipRRect(
                   borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(15),
-                      topRight: Radius.circular(15)),
+                      topLeft: Radius.circular(20),
+                      topRight: Radius.circular(20)),
                   child: Hero(
                     tag: imgUrl,
                     child: Image.network(
@@ -76,24 +76,27 @@ class MealItem extends StatelessWidget {
                     ),
                   ),
                 ),
-                Positioned(
-                  bottom: 20,
-                  right: 10,
+                ClipRRect(
+                  borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(20),
+                      topRight: Radius.circular(20)),
                   child: Container(
-                    width: 300,
-                    color: Colors.black54,
-                    padding: EdgeInsets.symmetric(vertical: 5, horizontal: 20),
+                    width: double.infinity,
+                    color: Colors.blue,
+                    padding: EdgeInsets.symmetric(vertical: 8, horizontal: 10),
                     child: Text(
                       title,
+                      textAlign: TextAlign.center,
                       style: TextStyle(
-                        fontSize: 26,
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
                         color: Colors.white,
                       ),
                       softWrap: true,
                       overflow: TextOverflow.fade,
                     ),
                   ),
-                )
+                ),
               ],
             ),
             Padding(
@@ -103,7 +106,7 @@ class MealItem extends StatelessWidget {
                 children: <Widget>[
                   Row(
                     children: <Widget>[
-                      Icon(Icons.schedule),
+                      Icon(Icons.access_time_filled),
                       SizedBox(
                         width: 6,
                       ),
@@ -112,7 +115,7 @@ class MealItem extends StatelessWidget {
                   ),
                   Row(
                     children: <Widget>[
-                      Icon(Icons.work),
+                      Icon(Icons.assignment),
                       SizedBox(
                         width: 6,
                       ),
@@ -121,7 +124,7 @@ class MealItem extends StatelessWidget {
                   ),
                   Row(
                     children: <Widget>[
-                      Icon(Icons.attach_money),
+                      Icon(Icons.monetization_on),
                       SizedBox(
                         width: 6,
                       ),

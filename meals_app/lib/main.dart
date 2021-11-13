@@ -1,13 +1,10 @@
-//import 'dart:html';
-
 import 'package:flutter/material.dart';
 import './models/meal.dart';
 import './screens/filters.dart';
 import './screens/meals-details.dart';
 import './screens/tabs.dart';
-import './dummy_data.dart';
 import './screens/categMeals.dart';
-//import './screens/categories.dart';
+import './dummy_data.dart';
 
 void main() => runApp(MyApp());
 
@@ -72,7 +69,7 @@ class _MyAppState extends State<MyApp> {
       theme: ThemeData(
           primarySwatch: Colors.pink,
           accentColor: Colors.blue[200],
-          canvasColor: Color.fromRGBO(255, 254, 239, 1),
+          canvasColor: Color.fromRGBO(255, 254, 239, 1.0),
           fontFamily: 'Raleway',
           textTheme: ThemeData.light().textTheme.copyWith(
               bodyText1: TextStyle(color: Color.fromRGBO(20, 51, 51, 1)),
@@ -80,14 +77,13 @@ class _MyAppState extends State<MyApp> {
               headline6: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
-                  fontFamily: 'RobotoCondensed '))),
-      // home: CategoriesScreen(),
+                  fontFamily: 'Raleway'))),
       initialRoute: '/',
       routes: {
-        '/': (ctx) => TabsScreen(_favoriteMeals),
-        CategoryMeals.routeName: (ctx) => CategoryMeals(_availableMeals),
-        MealDetails.routename: (ctx) => MealDetails(_togglefav, isFavoriteMeal),
-        Filters.routeName: (ctx) => Filters(_setFilters, _filters),
+        '/': (context) => TabsScreen(_favoriteMeals),
+        CategoryMeals.routeName: (context) => CategoryMeals(_availableMeals),
+        MealDetails.routename: (context) => MealDetails(_togglefav, isFavoriteMeal),
+        Filters.routeName: (context) => Filters(_setFilters, _filters),
       },
       debugShowCheckedModeBanner: false,
     );

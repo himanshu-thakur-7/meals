@@ -6,7 +6,7 @@ class CategoriesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GridView(
-      padding: const EdgeInsets.all(25),
+      padding: const EdgeInsets.all(15),
       children: DUMMY_CATEGORIES
           .map((categ) => CategoryItem(
                 color: categ.color,
@@ -17,8 +17,8 @@ class CategoriesScreen extends StatelessWidget {
       gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
         maxCrossAxisExtent: 200,
         childAspectRatio: 3 / 2,
-        crossAxisSpacing: 20,
-        mainAxisSpacing: 20,
+        crossAxisSpacing: 15,
+        mainAxisSpacing: 15,
       ),
     );
   }
