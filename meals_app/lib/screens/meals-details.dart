@@ -21,7 +21,8 @@ class MealDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<dynamic> args = ModalRoute.of(context).settings.arguments as List<dynamic>;
+    List<dynamic> args =
+        ModalRoute.of(context).settings.arguments as List<dynamic>;
     final mealid = args[0];
     final duration = args[1];
     final complexity = args[2];
@@ -50,7 +51,7 @@ class MealDetails extends StatelessWidget {
               GridView(
                 padding: const EdgeInsets.all(20),
                 shrinkWrap: true,
-                children: <Widget> [
+                children: <Widget>[
                   BasicInfoCard(duration, Icons.access_time),
                   BasicInfoCard(complexity, Icons.assignment_outlined),
                   BasicInfoCard(affordability, Icons.monetization_on_outlined)
@@ -70,12 +71,10 @@ class MealDetails extends StatelessWidget {
                   itemBuilder: (context, index) {
                     return Padding(
                       padding: EdgeInsets.all(8.0),
-                      child: Expanded(
-                        child: Text(
-                          '${index + 1}.     ${selectedMeal.ingredients[index]}',
-                          style: TextStyle(
-                            fontSize: 16,
-                          ),
+                      child: Text(
+                        '${index + 1}.     ${selectedMeal.ingredients[index]}',
+                        style: TextStyle(
+                          fontSize: 16,
                         ),
                       ),
                     );
