@@ -11,8 +11,8 @@ class MainDrawer extends StatelessWidget {
       title: Text(
         title,
         style: TextStyle(
-            fontFamily: 'RobotoCondensed',
-            fontSize: 24,
+            fontFamily: 'Raleway',
+            fontSize: 20,
             fontWeight: FontWeight.bold),
       ),
       onTap: () {
@@ -30,12 +30,12 @@ class MainDrawer extends StatelessWidget {
           height: 120,
           width: double.infinity,
           padding: EdgeInsets.all(20),
-          alignment: Alignment.centerLeft,
+          alignment: Alignment.center,
           color: Theme.of(context).accentColor,
           child: Text(
             'Cook Delicious!',
             style: TextStyle(
-              fontWeight: FontWeight.w900,
+              fontWeight: FontWeight.w700,
               fontSize: 30,
               color: Theme.of(context).primaryColor,
             ),
@@ -50,7 +50,7 @@ class MainDrawer extends StatelessWidget {
         SizedBox(
           height: 10,
         ),
-        buildListTile('Filters', Icons.settings, () {
+        buildListTile('Filters', Icons.filter_list_alt, () {
           Navigator.of(context).pushReplacementNamed(Filters.routeName);
         })
       ],

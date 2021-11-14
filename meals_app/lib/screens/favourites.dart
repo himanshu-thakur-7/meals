@@ -9,7 +9,7 @@ class Favourites extends StatelessWidget {
   Widget build(BuildContext context) {
     if (_favoriteMeals.isEmpty) {
       return Center(
-        child: Text('You got no favorites yet..try adding some!'),
+        child: Text('You got no favorites yet. Try adding some.'),
       );
     } else {
       return ListView.builder(

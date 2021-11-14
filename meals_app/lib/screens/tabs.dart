@@ -44,23 +44,21 @@ class _TabsScreenState extends State<TabsScreen> {
             selectedItemColor: Theme.of(context).primaryColor,
             unselectedItemColor: Colors.black,
             currentIndex: _selectedIndex,
-            items: [
+            items: <BottomNavigationBarItem>[
               BottomNavigationBarItem(
                   //  backgroundColor: Theme.of(context).accentColor.withOpacity(0.4),
                   icon: Icon(
                     Icons.category,
                     size: 29,
                   ),
-                  title: Text(
-                    'Categories',
-                  )),
+                  label: 'Categories'),
               BottomNavigationBarItem(
                 // backgroundColor: Theme.of(context).accentColor.withOpacity(0.4),
                 icon: Icon(
                   Icons.favorite,
                   size: 29,
                 ),
-                title: Text('Favorites'),
+                label: 'Favorites',
               )
             ]),
       ),
