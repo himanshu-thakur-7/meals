@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:meals_app/models/meal.dart';
 import '../widgets/basicInfoCard.dart';
 import '../dummy_data.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class MealDetails extends StatelessWidget {
   static const routename = '/mealdetails';
@@ -71,11 +72,25 @@ class MealDetails extends StatelessWidget {
                   itemBuilder: (context, index) {
                     return Padding(
                       padding: EdgeInsets.all(8.0),
-                      child: Text(
-                        '${index + 1}.     ${selectedMeal.ingredients[index]}',
-                        style: TextStyle(
-                          fontSize: 16,
-                        ),
+                      child: Row(
+                        children: <Widget>[
+                          Icon(
+                            FontAwesomeIcons.solidCheckCircle,
+                            // color: Colors.amber,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                          SizedBox(
+                            width: 15,
+                          ),
+                          Expanded(
+                            child: Text(
+                              selectedMeal.ingredients[index],
+                              style: TextStyle(
+                                fontSize: 16,
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                     );
                   },
