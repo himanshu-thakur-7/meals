@@ -19,7 +19,12 @@ class MealItem extends StatelessWidget {
       @required this.imgUrl});
 
   void selectMeal(BuildContext context) {
-    Navigator.of(context).pushNamed(MealDetails.routename, arguments: id);
+    Navigator.of(context).pushNamed(MealDetails.routename, arguments: [
+      id,
+      '$duration min',
+      complexityTxt,
+      affordTxt
+    ]);
   }
 
   String get complexityTxt {

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:meals_app/models/meal.dart';
+import '../widgets/basicInfoCard.dart';
 import '../dummy_data.dart';
 
 class MealDetails extends StatelessWidget {
@@ -6,33 +8,25 @@ class MealDetails extends StatelessWidget {
   final Function _togglefavorite;
   MealDetails(this._togglefavorite, this._isFavouriteMeal);
   final Function _isFavouriteMeal;
+
   Widget buildSectionTitle(BuildContext context, String text) {
     return Container(
-      margin: EdgeInsets.symmetric(vertical: 10),
+      margin: EdgeInsets.symmetric(vertical: 40),
       child: Text(
         text,
-        style: Theme.of(context).textTheme.headline6.copyWith(fontSize: 26),
+        style: Theme.of(context).textTheme.headline6.copyWith(fontSize: 20),
       ),
-    );
-  }
-
-  Widget buildContainer(Widget child) {
-    return Container(
-      decoration: BoxDecoration(
-          color: Colors.white,
-          border: Border.all(color: Colors.grey),
-          borderRadius: BorderRadius.circular(10)),
-      height: 200,
-      width: 300,
-      margin: EdgeInsets.all(10),
-      padding: EdgeInsets.all(10),
-      child: child,
     );
   }
 
   @override
   Widget build(BuildContext context) {
-    final mealid = ModalRoute.of(context).settings.arguments;
+    List<dynamic> args = ModalRoute.of(context).settings.arguments as List<dynamic>;
+    final mealid = args[0];
+    final duration = args[1];
+    final complexity = args[2];
+    final affordability = args[3];
+
     final selectedMeal = DUMMY_MEALS.firstWhere((meal) => meal.id == mealid);
     return Scaffold(
       appBar: AppBar(
@@ -53,44 +47,74 @@ class MealDetails extends StatelessWidget {
                   ),
                 ),
               ),
-              buildSectionTitle(context, 'Ingredients'),
-              buildContainer(ListView.builder(
-                itemBuilder: (context, index) {
-                  return Card(
-                    color: Theme.of(context).accentColor,
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 10.0, vertical: 5),
-                      child: Text(
-                        selectedMeal.ingredients[index],
-                        style: TextStyle(
-                          fontSize: 18,
+              GridView(
+                padding: const EdgeInsets.all(20),
+                shrinkWrap: true,
+                children: <Widget> [
+                  BasicInfoCard(duration, Icons.access_time),
+                  BasicInfoCard(complexity, Icons.assignment_outlined),
+                  BasicInfoCard(affordability, Icons.monetization_on_outlined)
+                ],
+                gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+                  maxCrossAxisExtent: 140,
+                  childAspectRatio: 3 / 3,
+                  crossAxisSpacing: 20,
+                  mainAxisSpacing: 20,
+                ),
+              ),
+              buildSectionTitle(context, 'Ingredients:'),
+              Container(
+                padding: EdgeInsets.only(left: 20, right: 20),
+                child: ListView.builder(
+                  shrinkWrap: true,
+                  itemBuilder: (context, index) {
+                    return Padding(
+                      padding: EdgeInsets.all(8.0),
+                      child: Expanded(
+                        child: Text(
+                          '${index + 1}.     ${selectedMeal.ingredients[index]}',
+                          style: TextStyle(
+                            fontSize: 16,
+                          ),
                         ),
                       ),
-                    ),
-                  );
-                },
-                itemCount: selectedMeal.ingredients.length,
-              )),
-              buildSectionTitle(context, 'Steps'),
-              buildContainer(ListView.builder(
-                itemBuilder: (context, index) {
-                  return Column(
-                    children: <Widget>[
-                      ListTile(
-                        leading: CircleAvatar(
-                          child: Text('# ${index + 1}'),
-                        ),
-                        title: Text(selectedMeal.steps[index]),
+                    );
+                  },
+                  itemCount: selectedMeal.ingredients.length,
+                ),
+              ),
+              buildSectionTitle(context, 'Process:'),
+              Container(
+                padding: EdgeInsets.only(left: 20, right: 20),
+                child: ListView.builder(
+                  shrinkWrap: true,
+                  itemBuilder: (context, index) {
+                    return Padding(
+                      padding: EdgeInsets.all(10.0),
+                      child: Row(
+                        children: <Widget>[
+                          Icon(
+                            Icons.auto_stories,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                          SizedBox(
+                            width: 15,
+                          ),
+                          Expanded(
+                            child: Text(
+                              selectedMeal.steps[index],
+                              style: TextStyle(
+                                fontSize: 16,
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
-                      Divider(
-                        thickness: 1,
-                      )
-                    ],
-                  );
-                },
-                itemCount: selectedMeal.steps.length,
-              ))
+                    );
+                  },
+                  itemCount: selectedMeal.steps.length,
+                ),
+              ),
             ],
           ),
         ),
